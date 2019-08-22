@@ -6,6 +6,7 @@ import Login from './Login';
 
 import MainContainer from './MainContainer'
 import Register from './Register'
+import Profile from './Profile'
 
 const My404 = () =>{
   return (
@@ -51,6 +52,8 @@ class App extends Component {
 
       console.log(parsedResponse)
       return parsedResponse
+    } catch (err) {
+      console.log(err);
     }
   }
  
@@ -83,7 +86,7 @@ class App extends Component {
             <Route exact path='/data/' component={ MainContainer } />
 
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
-
+            <Route exact path="/user/:id" render={(props) => <Profile {...props} userInfo={this.state}/> } />
             <Route component={My404} />
           </Switch>
         </main>
