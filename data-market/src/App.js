@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Login';
-
+import Purchase from './Purchase'
 import MainContainer from './MainContainer'
 import Register from './Register'
 
@@ -51,6 +51,8 @@ class App extends Component {
 
       console.log(parsedResponse)
       return parsedResponse
+    } catch(err) {
+      console.log(err)
     }
   }
  
@@ -81,7 +83,7 @@ class App extends Component {
             <Route exact path="/" render={(props) => <Login {...props} logIn={this.logIn} />} />
 
             <Route exact path='/data/' component={ MainContainer } />
-
+            
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
 
             <Route component={My404} />
