@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import DataList from '../DataList'
-
+import Purchase from '../Purchase'
 
 
 class MainContainer extends Component {
   constructor(){
     super();
     this.state = {
-      datasets: []
+      datasets: [],
+      showPurchaseModal: false, 
+      chosenDataSetIndex: null
     }
   }
 
   componentDidMount() {
     // console.log(URL);
     this.getDataSets()
+  }
+
+  showModal = (dataSet) => {
+    console.log(dataSet, ' dataSetID in show Modal')
+    this.setState({
+      chosenDataSetIndex: dataSet,
+      showPurchaseModal: !this.state.showPurchaseModal
+    })
   }
 
   getDataSets = async () => {
@@ -49,9 +59,9 @@ class MainContainer extends Component {
     console.log(this.state, '<--state in render');
     return (
       <div>
-        <DataList datasets={this.state.datasets}/>
+        {this.state.showPurchaseModal? <Purchase/> : <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>}
       </div>
-      )
+    )
   }
 }
 
