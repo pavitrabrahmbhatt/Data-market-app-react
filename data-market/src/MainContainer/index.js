@@ -57,9 +57,16 @@ class MainContainer extends Component {
 
   render(){
     console.log(this.state, '<--state in render');
+    console.log(this.props.userInfo.id, "HERE IS THE ID INSIDE MAIN CONTAINER")
     return (
       <div>
-        {this.state.showPurchaseModal? <Purchase/> : <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>}
+        {
+          this.state.showPurchaseModal
+          ? 
+          <Purchase datasets={this.state.datasets} id={this.props.userInfo.id}/> 
+          : 
+          <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
+        }
       </div>
     )
   }
