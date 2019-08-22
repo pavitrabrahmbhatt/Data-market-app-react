@@ -40,6 +40,7 @@ class App extends Component {
         }
       })
 
+
       const parsedResponse = await loginResponse.json();
 
 
@@ -52,9 +53,10 @@ class App extends Component {
 
       console.log(parsedResponse)
       return parsedResponse
-      
+
     } catch (err) {
       console.log(err);
+    }
   }
  
   register = async (data) => {
@@ -90,7 +92,7 @@ class App extends Component {
             <Route component={My404} />
           </Switch>
         </main>
-    );
+    )
   }
 }
 

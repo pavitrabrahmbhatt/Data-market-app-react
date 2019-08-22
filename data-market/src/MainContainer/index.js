@@ -35,14 +35,14 @@ class MainContainer extends Component {
         method: 'GET'
       });
 
-      console.log(responseGetDataSets, ' responseGetDataSets')
+      //console.log(responseGetDataSets, ' responseGetDataSets')
 
       if(responseGetDataSets.status !== 200){
         throw Error('404 from server');
       }
 
       const dataResponse = await responseGetDataSets.json();
-      console.log(dataResponse, ' dataResponse')
+      //console.log(dataResponse, ' dataResponse')
 
       this.setState({
         datasets: [...dataResponse.data]
@@ -56,7 +56,7 @@ class MainContainer extends Component {
   }
 
   render(){
-    console.log(this.state, '<--state in render');
+    // console.log(this.state.datasets[0].name, '<--state in render');
     return (
       <div>
         {this.state.showPurchaseModal? <Purchase/> : <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>}
