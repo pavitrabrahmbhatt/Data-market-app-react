@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(){
@@ -15,43 +17,47 @@ class Login extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
+    const login = this.props.logIn(this.state);
 
-      const loginResponse = await fetch('http://localhost:9000/auth', {
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(this.state),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-
-      const parsedResponse = await loginResponse.json();
-
-      if(parsedResponse.data === 'login successful'){
-       
-        this.props.history.push('/dogs')
+    login.then((data) => {
+      if(data.status.message === 'Success'){
+        this.props.history.push('/data/')
+      } else {
+        console.log(data, this.props)
       }
+    }).catch((err) => {
+      console.log(err)
+    })
 
-
-    } catch (err) {
-
-    }
   }
   render(){
     return (
-      <form onSubmit={this.handleSubmit}>
-        Email:
-        <input type='text' name='email' onChange={this.handleChange}/>
-        Password:
-        <input type='password' name='password' onChange={this.handleChange}/>
-        <button type='sumbit'>Login</button>
-      </form>
+      <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
+        <Grid.Column style={{maxWidth: 450}}>
+          <Header as='h2' textAlign='center'>
+            Login
+          </Header>
+          <Form onSubmit={this.handleSubmit}>
+              <Segment stacked>
+              Email:
+              <Form.Input fluid icon='mail' iconPosition='left' placeholder='email' type='text' name='email' onChange={this.handleChange}/>
+              password:
+              <Form.Input fluid icon='lock' iconPosition='left' type='password' name='password' onChange={this.handleChange}/>
+              <Button fluid size='large' type='sumbit'>Login</Button>
+              <Message>
+                Not a member? <Link to='/register'>Register</Link>
+              </Message>
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
       )
   }
 }
 
 export default Login;
+
+
 
 
 
