@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Login';
+import MainContainer from './MainContainer'
 
 
 const My404 = () =>{
@@ -51,32 +52,6 @@ class App extends Component {
       console.log(err)
     }
   }
-  // register = async (data) => {
-  //    try {
-
-  //     const registerResponse = await fetch('http://localhost:8000/user/register', {
-  //       method: 'POST',
-  //       credentials: 'include',// on every request we have to send the cookie
-  //       body: data,
-  //       headers: {
-  //         'enctype': 'multipart/form-data'
-  //       }
-  //     })
-
-  //     const parsedResponse = await registerResponse.json();
-
-  //     console.log(parsedResponse)
-
-  //     this.setState({
-  //       ...parsedResponse.data,
-  //       loading: false
-  //     })
-  //     return parsedResponse;
-
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
   render(){
       return (
         <main>
