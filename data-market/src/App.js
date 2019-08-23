@@ -7,7 +7,9 @@ import Purchase from './Purchase'
 import MainContainer from './MainContainer'
 import Register from './Register'
 import Profile from './Profile'
+import SampleData from './SampleData'
 import Sell from './Sell'
+
 
 
 const My404 = () =>{
@@ -124,9 +126,11 @@ class App extends Component {
             <Route exact path='/data/:id' render={(props) => <Purchase {...props} userInfo={this.state} /> } />
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
             <Route exact path="/user/:id" render={(props) => <Profile {...props} userInfo={this.state}/> } />
+            <Route exact path="/sample" render={(props) => <SampleData {...props} userInfo={this.state}/> } />
             <Route component={My404} />
           </Switch>
         </main>
+
     )
 
   }

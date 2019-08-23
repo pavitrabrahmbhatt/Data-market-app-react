@@ -77,13 +77,37 @@ class MainContainer extends Component {
 
     return (
       <div>
-        <div>
-          <Link to='/data/sell'>Sell Data</Link>
-        </div>
-        <div>
-          <Link to='/user/:id'>Profile</Link>
-        </div>
-      <div>
+
+        <div class="ui borderless left vertical menu">
+            <a href='' class="item">
+              LOGO
+            </a>
+            <a href='/data' class="item">
+              <i class="grid layout icon"></i> Browse Data
+            </a>
+            <a href='/sample'class="item">
+              Sample Data
+            </a>
+            <a href='/user/:id' class="item">
+              Profile
+            </a>
+            <a href='/'>
+            <div class="item">
+              <div class="ui button">Log-Out</div>
+            </div>
+            </a>
+          </div>
+
+          <div>
+            <Link to='/data/sell'>Sell Data</Link>
+          </div>
+
+          <div>
+            <Link to='/user/:id'>Profile</Link>
+          </div>
+
+      
+
         {
           this.state.showPurchaseModal
           ? 
@@ -91,7 +115,6 @@ class MainContainer extends Component {
           : 
           <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
         }
-      </div>
       </div>
     )
   }
