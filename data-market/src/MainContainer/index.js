@@ -56,10 +56,21 @@ class MainContainer extends Component {
   }
 
   render(){
+<<<<<<< HEAD
     // console.log(this.state.datasets[0].name, '<--state in render');
+=======
+    console.log(this.state, '<--state in render');
+    console.log(this.props.userInfo.id, "HERE IS THE ID INSIDE MAIN CONTAINER")
+>>>>>>> 2df4b04ca0ffdc1817746d2a07813905d71a74e6
     return (
       <div>
-        {this.state.showPurchaseModal? <Purchase/> : <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>}
+        {
+          this.state.showPurchaseModal
+          ? 
+          <Purchase datasets={this.state.datasets} id={this.props.userInfo.id}/> 
+          : 
+          <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
+        }
       </div>
     )
   }

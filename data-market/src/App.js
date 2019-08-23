@@ -24,6 +24,7 @@ class App extends Component {
       password: '',
       email: '',
       full_name: '',
+      id: 0,
       loggedIn: false,
       loading: true
     }
@@ -42,6 +43,7 @@ class App extends Component {
 
 
       const parsedResponse = await loginResponse.json();
+      console.log(parsedResponse.data.id, "THIS IS THE PARSED RESPONSE")
 
 
       this.setState(() => {
@@ -51,13 +53,14 @@ class App extends Component {
         }
       })
 
-      console.log(parsedResponse)
+      console.log(this.state.id, "THIS IS ID IN THIS.STATE")
       return parsedResponse
 
     } catch (err) {
       console.log(err);
     }
   }
+}
  
   register = async (data) => {
 
@@ -85,15 +88,19 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} logIn={this.logIn} />} />
 
-            <Route exact path='/data/' component={ MainContainer } />
+            <Route exact path='/data/' render={(props) => <MainContainer {...props} userInfo={this.state} /> } />
             
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
             <Route exact path="/user/:id" render={(props) => <Profile {...props} userInfo={this.state}/> } />
             <Route component={My404} />
           </Switch>
         </main>
+<<<<<<< HEAD
     )
+=======
+     )
+>>>>>>> 2df4b04ca0ffdc1817746d2a07813905d71a74e6
   }
 }
 
-export default App;
+export default App

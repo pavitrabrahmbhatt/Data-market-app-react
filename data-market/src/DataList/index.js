@@ -5,6 +5,7 @@ import { Grid, Header, Card } from 'semantic-ui-react'
 
 const DataSets = (props) => {
   console.log(props, ' props in dataList')
+  console.log(props.name)
 
   const dataList = props.datasets.map((dataset) => {
     return (
