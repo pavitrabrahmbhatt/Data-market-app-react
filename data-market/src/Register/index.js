@@ -13,7 +13,7 @@ class Register extends Component {
       organization_name: '',
       job_title: ''
     }
-    
+
   }
 
   handleChange = (e) => {
@@ -46,7 +46,9 @@ class Register extends Component {
               Job Title:
               <Form.Input placeholder='Job Title' type='text' name='job_title' onChange={this.handleChange}/>
 
+              <a href='/'>
               <Button fluid size='large' type='sumbit'>Register</Button>
+              </a>
               <Message>
                 Already a member? <Link to='/'>Login</Link>
               </Message>
