@@ -7,7 +7,9 @@ import Purchase from './Purchase'
 import MainContainer from './MainContainer'
 import Register from './Register'
 import Profile from './Profile'
+
 import SampleData from './SampleData'
+
 import Sell from './Sell'
 
 
@@ -47,18 +49,17 @@ class App extends Component {
 
 
       const parsedResponse = await loginResponse.json();
-      
+      console.log(parsedResponse.data.id, "THIS IS THE PARSED RESPONSE")
 
 
       this.setState(() => {
         return {
           ...parsedResponse.data,
-          loading: false,
+          loading: false
         }
       })
 
-      //this.setName()
-      console.log(this.state.full_name, "HERE IS THE FULL NAME IN STATE AFTER LOGGING IN")
+      console.log(this.state.id, "THIS IS ID IN THIS.STATE")
       return parsedResponse
 
     } catch (err) {
@@ -68,7 +69,7 @@ class App extends Component {
 
  
   register = async (data) => {
-    
+
      try {
 
       const registerResponse = await fetch('http://localhost:8000/user/register', {
@@ -81,12 +82,6 @@ class App extends Component {
       })
 
       const parsedResponse = await registerResponse.json();
-      this.setState({
-        full_name: data.full_name
-      })
-      
-
-      return parsedResponse
 
     } catch (err) {
       console.log(err)
@@ -107,8 +102,15 @@ class App extends Component {
 
       const parsedResponse = await sellResponse.json();
 
-      
+      console.log("here is parsedRespoinse in sellData in App.js")
+      console.log(parsedResponse)
 
+      this.setState(() => {
+        return {
+          ...parsedResponse.data,
+          loading: false
+        }
+      })
       return parsedResponse
 
     } catch (err) {
@@ -131,7 +133,10 @@ class App extends Component {
           </Switch>
         </main>
 
+
     )
+
+
 
   }
 }

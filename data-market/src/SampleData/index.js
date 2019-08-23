@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react'
 import { Grid, Header, Card } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 class SampleData extends Component {
    constructor() {
@@ -32,41 +34,29 @@ class SampleData extends Component {
    render() {
       return (
       	<Grid columns={2} padded style={{ height: '100vh'}}>
-         <div>
-         <div>
-  	<div class="ui borderless left vertical menu">
-          <a href='' class="item">
-            LOGO
-          </a>
-          <a href='/data' class="item">
-            <i class="grid layout icon"></i> Browse Data
-          </a>
-          <a href='/sample' class="item">
-            Sample Data
-          </a>
-          <a href='/user/:id' class="item">
-            Profile
-          </a>
-          <a href='/'>
-          <div class="item">
-            <div class="ui button">Log-Out</div>
-          </div>
-          </a>
-        </div>
+         <Menu pointing secondary vertical>
+            <Menu.Item as={ Link } to="">LOGO</Menu.Item>
+            <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
+            <Menu.Item as={ Link } to="/sample">Sample Data</Menu.Item>
+            <Menu.Item as={ Link } to="/user/:id">Profile</Menu.Item>
+            <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
+            <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
+            </Menu>
+  	
 
 
 
     
       
     
-    </div>
+    
             <h1 id='title'>U.S. Real Estate Inventory</h1>
             <table id='students'>
                <tbody>
                   {this.renderTableData()}
                </tbody>
             </table>
-         </div>
+         
       </Grid>
       )
 }

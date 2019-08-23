@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import DataList from '../DataList'
 import Purchase from '../Purchase'
-
+import { Menu } from 'semantic-ui-react'
+import { Button, Form, Grid, Image, Message, Card, Icon} from 'semantic-ui-react';
 
 class MainContainer extends Component {
   constructor(){
@@ -76,35 +77,18 @@ class MainContainer extends Component {
   render(){
 
     return (
-      <div>
+     
+       <Grid columns={2} padded style={{ height: '100vh'}}>
+        <Menu pointing secondary vertical>
+            <Menu.Item as={ Link } to="">LOGO</Menu.Item>
+            <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
+            <Menu.Item as={ Link } to="/sample">Sample Data</Menu.Item>
+            <Menu.Item as={ Link } to="/user/:id">Profile</Menu.Item>
+            <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
+            <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
+            </Menu>
 
-        <div class="ui borderless left vertical menu">
-            <a href='' class="item">
-              LOGO
-            </a>
-            <a href='/data' class="item">
-              <i class="grid layout icon"></i> Browse Data
-            </a>
-            <a href='/sample'class="item">
-              Sample Data
-            </a>
-            <a href='/user/:id' class="item">
-              Profile
-            </a>
-            <a href='/'>
-            <div class="item">
-              <div class="ui button">Log-Out</div>
-            </div>
-            </a>
-          </div>
-
-          <div>
-            <Link to='/data/sell'>Sell Data</Link>
-          </div>
-
-          <div>
-            <Link to='/user/:id'>Profile</Link>
-          </div>
+         
 
       
 
@@ -115,7 +99,7 @@ class MainContainer extends Component {
           : 
           <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
         }
-      </div>
+     </Grid>
     )
   }
 }

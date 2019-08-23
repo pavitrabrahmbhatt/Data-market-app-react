@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment, Label } from 'semantic-ui-react';
+
+import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
 class Sell extends Component {
@@ -50,8 +52,21 @@ class Sell extends Component {
   render(){
     console.log(this.state.user_id, "HERE IS USER ID ON THE SELL PAGE")
     return (
-      <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
-        <Grid.Column style={{maxWidth: 450}}>
+      
+      <Grid columns={4} padded style={{ height: '100vh'}}>  
+
+        <Menu pointing secondary vertical>
+            <Menu.Item as={ Link } to="">LOGO</Menu.Item>
+            <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
+            <Menu.Item as={ Link } to="/sample">Sample Data</Menu.Item>
+            <Menu.Item as={ Link } to="/user/:id">Profile</Menu.Item>
+            <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
+            <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
+            </Menu>
+        <Grid.Column>
+        </Grid.Column>
+        
+        <Grid.Column style={{maxWidth: 400}}>
           <Header as='h2' textAlign='center'>
             Sell A Data Set
           </Header>
