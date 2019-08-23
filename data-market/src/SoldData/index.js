@@ -3,20 +3,20 @@ import React from 'react'
 import { Grid, Header, Card } from 'semantic-ui-react'
 
 
-const PurchasedData = (props) => {
+const SoldData = (props) => {
   console.log(props, ' props in dataList')
   
 
-  const purchaseList = props.orders.map((dataset, i) => {
+  const soldList = props.soldData.map((dataset, i) => {
     return (
       <Grid.Column>
       <Card key={i}>
-        <Card.Content header={dataset.product_id.name} />
+        <Card.Content header={dataset.name} />
         <Card.Content>
-        Description: {dataset.product_id.description}<br/>
-        Industry: {dataset.product_id.industry}<br/>
+        Description: {dataset.description}<br/>
+        Industry: {dataset.industry}<br/>
         Posted: {dataset.created_at.toLocaleString()}<br/>
-        Territory: {dataset.product_id.territory}
+        Territory: {dataset.territory}
         </Card.Content>
         <Card.Content extra>
           <button>DOWNLOAD</button>
@@ -27,14 +27,12 @@ const PurchasedData = (props) => {
   })
   return (
     <div>
-      <Header as='h3' textAlign='center'>Purchased Data Sets</Header>
+      <Header as='h3' textAlign='center'>Sold Data Sets</Header>
       <Grid columns={3} padded>
-        {purchaseList}
+        {soldList}
       </Grid>
     </div>
     )
 }
 
-export default PurchasedData
-
-//button data-product={i} onClick={props.showModal.bind(null, dataset.id)}>Purchase</button>
+export default SoldData

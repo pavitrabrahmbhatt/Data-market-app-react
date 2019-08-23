@@ -4,13 +4,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PurchasedData from '../PurchasedData'
 import { Button, Form, Grid, Image, Message, Card, Icon} from 'semantic-ui-react';
+import SoldData from '../SoldData'
 //import Header from '../Header'
 
 class Profile extends Component {
   constructor(){
     super();
     this.state = {
-      purchasedData: []
+      purchasedData: [],
+      soldData: []
     }
   }
   componentDidMount() {
@@ -35,7 +37,8 @@ class Profile extends Component {
       //console.log(dataResponse, ' dataResponse')
       console.log(dataResponse)
       this.setState({
-        purchasedData: [...dataResponse.all_orders]
+        purchasedData: [...dataResponse.all_orders],
+        soldData: [...dataResponse.all_products]
       })
 
 
@@ -70,15 +73,12 @@ class Profile extends Component {
       </div>
 
       <div>
-      <Grid columns={2} padded style={{ height: '100vh'}}>
         
-        <Grid.Column>
         Username: {this.props.userInfo.full_name} <Link to='/user/:id'>Edit</Link> <br/><br/>
         <PurchasedData orders={this.state.purchasedData}/> <br/>
 
-        Data Sets Being Sold <br/>
-        </Grid.Column>
-      </Grid>
+        <SoldData soldData={this.state.soldData} />
+
       </div>
       </div>
       )
