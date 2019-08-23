@@ -8,6 +8,7 @@ import MainContainer from './MainContainer'
 import Register from './Register'
 import Profile from './Profile'
 
+
 const My404 = () =>{
   return (
     <div>
@@ -87,7 +88,7 @@ class App extends Component {
             <Route exact path="/" render={(props) => <Login {...props} logIn={this.logIn} />} />
 
             <Route exact path='/data/' render={(props) => <MainContainer {...props} userInfo={this.state} /> } />
-            
+            <Route exact path='/data/:id' render={(props) => <Purchase {...props} userInfo={this.state} /> } />
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
             <Route exact path="/user/:id" render={(props) => <Profile {...props} userInfo={this.state}/> } />
             <Route component={My404} />

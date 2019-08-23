@@ -7,20 +7,23 @@ const DataSets = (props) => {
   console.log(props, ' props in dataList')
   console.log(props.name)
 
-  const dataList = props.datasets.map((dataset) => {
+  const dataList = props.datasets.map((dataset, i) => {
     return (
-      <Card key={dataset._id}>
+      <div>
+      <Card key={i}>
         <Card.Content header={dataset.name} />
         <Card.Content>
         Description: {dataset.description}<br/>
         Industry: {dataset.industry}<br/>
+        Posted: {dataset.created_at.toLocaleString()}<br/>
         Territory: {dataset.territory}
         </Card.Content>
         <Card.Content extra>
           <b>{dataset.price}</b>
-          <button onClick={props.showModal.bind(null, dataset)}>Purchase</button>
         </Card.Content>
       </Card>
+      <button data-product={i} onClick={props.showModal.bind(null, dataset.id)}>Purchase</button>
+      </div>
     )
   })
   return (
