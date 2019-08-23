@@ -89,15 +89,6 @@ class App extends Component {
           loading: false
         }
       })
-
-      return parsedResponse
-
-      this.setState(() => {
-        return {
-          ...parsedResponse.data,
-          loading: false
-        }
-      })
       
       return parsedResponse
     } catch (err) {
@@ -105,7 +96,7 @@ class App extends Component {
     }
   }
   sellData = async (data) => {
-    console.log(data, "THIS IS WHAT WE ARE SENDING OVER")
+    
      try {
 
       const sellResponse = await fetch('http://localhost:8000/data/sell', {
@@ -119,8 +110,6 @@ class App extends Component {
 
       const parsedResponse = await sellResponse.json();
 
-      console.log("here is parsedRespoinse in sellData in App.js")
-      console.log(parsedResponse)
 
       this.setState(() => {
         return {
