@@ -59,6 +59,7 @@ class App extends Component {
 
       //this.setName()
       console.log(this.state.full_name, "HERE IS THE FULL NAME IN STATE AFTER LOGGING IN")
+      console.log(this.state.id, "HERE IS THE ID AFTER LOGGING IN")
       return parsedResponse
 
     } catch (err) {

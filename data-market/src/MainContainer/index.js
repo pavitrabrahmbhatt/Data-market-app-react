@@ -15,7 +15,7 @@ class MainContainer extends Component {
   }
 
   componentDidMount() {
-    // console.log(URL);
+    console.log(this.props.userInfo.id, "HERE IS THE USER ID WHEN MAIN CONTAINER MOUNTS")
     this.getDataSets()
   }
 
