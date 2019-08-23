@@ -77,6 +77,7 @@ class MainContainer extends Component {
 
     return (
       <div>
+
         <div class="ui borderless left vertical menu">
           <a href='' class="item">
             LOGO
@@ -95,10 +96,11 @@ class MainContainer extends Component {
             <div class="ui button">Log-Out</div>
           </div>
           </a>
+        
+          <Link to='/data/sell'>Sell Data</Link>
         </div>
+      <div>
 
-
-      
         {
           this.state.showPurchaseModal
           ? 
@@ -106,6 +108,7 @@ class MainContainer extends Component {
           : 
           <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
         }
+      </div>
       </div>
     )
   }
