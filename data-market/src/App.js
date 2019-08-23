@@ -59,7 +59,7 @@ class App extends Component {
         }
       })
 
-      console.log(this.state.id, "THIS IS ID IN THIS.STATE")
+
       return parsedResponse
 
     } catch (err) {
