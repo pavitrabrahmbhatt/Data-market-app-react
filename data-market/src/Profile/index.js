@@ -6,9 +6,10 @@ import { Button, Form, Grid, Header, Image, Message, Card, Icon} from 'semantic-
 
 
 class Profile extends Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
   }
+
   render(){
     console.log("HERE IS THE PROFILE PAGE")
     console.log(this.props.userInfo.full_name, "HERE IS THE USERS FULL NAME")
