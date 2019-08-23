@@ -51,10 +51,11 @@ class App extends Component {
       this.setState(() => {
         return {
           ...parsedResponse.data,
-          loading: false
+          loading: false,
         }
       })
 
+      //this.setName()
       console.log(this.state.id, "THIS IS ID IN THIS.STATE")
       return parsedResponse
 
@@ -78,6 +79,11 @@ class App extends Component {
       })
 
       const parsedResponse = await registerResponse.json();
+      this.setState({
+        full_name: data.full_name
+      })
+
+      return parsedResponse
 
     } catch (err) {
       console.log(err)
@@ -101,12 +107,6 @@ class App extends Component {
       console.log("here is parsedRespoinse in sellData in App.js")
       console.log(parsedResponse)
 
-      this.setState(() => {
-        return {
-          ...parsedResponse.data,
-          loading: false
-        }
-      })
       return parsedResponse
 
     } catch (err) {

@@ -78,7 +78,10 @@ class MainContainer extends Component {
     return (
       <div>
         <div>
-          <Link sellData={this.sellData} id={this.props.userInfo.id} to='/data/sell'>Sell Data</Link>
+          <Link to='/data/sell'>Sell Data</Link>
+        </div>
+        <div>
+          <Link to='/user/:id'>Profile</Link>
         </div>
       <div>
         {

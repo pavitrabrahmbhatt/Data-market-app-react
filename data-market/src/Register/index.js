@@ -22,8 +22,18 @@ class Register extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state, "STATE INSIDE HANDLE SUBMIT")
-    this.props.register(this.state);
+    const register = this.props.register(this.state);
+
+    register.then((data) => {
+      if(data.status.message === 'Success'){
+        this.props.history.push('/data/')
+      } else {
+        console.log(data, this.props)
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
+
   }
 
   render(){

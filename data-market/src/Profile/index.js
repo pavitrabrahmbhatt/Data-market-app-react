@@ -6,11 +6,12 @@ import { Button, Form, Grid, Header, Image, Message, Card, Icon} from 'semantic-
 
 
 class Profile extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
   render(){
-
+    console.log("HERE IS THE PROFILE PAGE")
+    console.log(this.props.userInfo.full_name, "HERE IS THE USERS FULL NAME")
     return (
       <Grid columns={2} padded style={{ height: '100vh'}}>
         
