@@ -8,8 +8,8 @@ const DataSets = (props) => {
 
   const dataList = props.datasets.map((dataset, i) => {
     return (
-      <div>
-      <Card key={i}>
+      <div key={i}>
+      <Card >
         <Card.Content header={dataset.name} />
         <Card.Content>
         Description: {dataset.description}<br/>

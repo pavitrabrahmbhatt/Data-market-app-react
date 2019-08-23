@@ -69,7 +69,6 @@ class App extends Component {
 
  
   register = async (data) => {
-
      try {
 
       const registerResponse = await fetch('http://localhost:8000/user/register', {
@@ -82,6 +81,16 @@ class App extends Component {
       })
 
       const parsedResponse = await registerResponse.json();
+      
+      
+      this.setState(() => {
+        return {
+          ...parsedResponse.data,
+          loading: false
+        }
+      })
+
+      return parsedResponse
 
     } catch (err) {
       console.log(err)

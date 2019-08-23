@@ -25,6 +25,7 @@ class Register extends Component {
     const register = this.props.register(this.state);
 
     register.then((data) => {
+      console.log(data, "HERE IS THE DATA IN THE REGISTER COMPONENET")
       if(data.status.message === 'Success'){
         this.props.history.push('/data/')
       } else {
