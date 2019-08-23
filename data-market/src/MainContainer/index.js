@@ -77,6 +77,10 @@ class MainContainer extends Component {
 
     return (
       <div>
+        <div>
+          <Link sellData={this.sellData} id={this.props.userInfo.id} to='/data/sell'>Sell Data</Link>
+        </div>
+      <div>
         {
           this.state.showPurchaseModal
           ? 
@@ -84,6 +88,7 @@ class MainContainer extends Component {
           : 
           <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
         }
+      </div>
       </div>
     )
   }

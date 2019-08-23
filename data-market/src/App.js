@@ -7,6 +7,7 @@ import Purchase from './Purchase'
 import MainContainer from './MainContainer'
 import Register from './Register'
 import Profile from './Profile'
+import Sell from './Sell'
 
 
 const My404 = () =>{
@@ -61,7 +62,7 @@ class App extends Component {
       console.log(err);
     }
   }
-}
+
  
   register = async (data) => {
 
@@ -82,13 +83,43 @@ class App extends Component {
       console.log(err)
     }
   }
+  sellData = async (data) => {
+
+     try {
+
+      const sellResponse = await fetch('http://localhost:8000/data/sell', {
+        method: 'POST',
+        credentials: 'include', 
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json' 
+        }
+      })
+
+      const parsedResponse = await sellResponse.json();
+
+      console.log("here is parsedRespoinse in sellData in App.js")
+      console.log(parsedResponse)
+
+      this.setState(() => {
+        return {
+          ...parsedResponse.data,
+          loading: false
+        }
+      })
+      return parsedResponse
+
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   render(){
       return (
         <main>
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} logIn={this.logIn} />} />
-
+            <Route exact path="/data/sell" render={(props) => <Sell {...props} userInfo={this.state} sellData={this.sellData} /> } />
             <Route exact path='/data/' render={(props) => <MainContainer {...props} userInfo={this.state} /> } />
             <Route exact path='/data/:id' render={(props) => <Purchase {...props} userInfo={this.state} /> } />
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
@@ -96,12 +127,10 @@ class App extends Component {
             <Route component={My404} />
           </Switch>
         </main>
-<<<<<<< HEAD
     )
-=======
-     )
->>>>>>> 2df4b04ca0ffdc1817746d2a07813905d71a74e6
+
   }
 }
+
 
 export default App
