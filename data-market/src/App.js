@@ -83,12 +83,20 @@ class App extends Component {
 
       const parsedResponse = await registerResponse.json();
 
+      this.setState(() => {
+        return {
+          ...parsedResponse.data,
+          loading: false
+        }
+      })
+      
+      return parsedResponse
     } catch (err) {
       console.log(err)
     }
   }
   sellData = async (data) => {
-
+    console.log(data, "THIS IS WHAT WE ARE SENDING OVER")
      try {
 
       const sellResponse = await fetch('http://localhost:8000/data/sell', {
