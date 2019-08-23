@@ -1,16 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 //import DataSet from '../DataSet'
 
+
 class Purchase extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
   }
   orderDataSet = async (e) => {
     e.preventDefault();
 
     try {
-      const createOrderResponse = await fetch(`http://localhost:8000/order/${this.props.datasets[0].id}`, {
+      const createOrderResponse = await fetch(`http://localhost:8000/order/${this.props.datasets[this.props.index].id}`, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(),
@@ -25,33 +27,31 @@ class Purchase extends React.Component {
       throw Error('Resource not found')
     }
 
-    // const createEmployee = await createEmployeeResponse.json();
-    // console.log(createEmployee, ' createEmployeeResponse');
+    this.props.updateFeed()
 
-    // this.setState({
-    //   employees: [...this.state.employees, createEmployee.data]
-    // })
 
     } catch (err) {
       console.error(err, ' createOrder');
       return err
     }
+
+
+
   }
   render(){
-<<<<<<< HEAD
-    // console.log(this.props, "YOOOO");
-=======
-    console.log("this.props in Purchase")
-    console.log(this.props.datasets[0])
-    console.log(this.props.id, "HERE IS THE ID INSIDE THE PURCHASE CONTAINER")
->>>>>>> 2df4b04ca0ffdc1817746d2a07813905d71a74e6
+
     return(
       <div>
         <h5>PURCHASE PAGE</h5>
-        <div>Title: {this.props.datasets[0].name} 
-             Industry: {this.props.datasets[0].name}
+        <div>Title: {this.props.datasets[this.props.index].name} 
+             Industry: {this.props.datasets[this.props.index].industry}
              <button onClick={this.orderDataSet}>Order</button>
         </div>
+      
+
+      <div>
+        <Link to='/data/'>Feed</Link>
+      </div>
       </div>
     )
   }

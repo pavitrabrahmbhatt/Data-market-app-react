@@ -19,10 +19,28 @@ class MainContainer extends Component {
     this.getDataSets()
   }
 
-  showModal = (dataSet) => {
-    console.log(dataSet, ' dataSetID in show Modal')
+  showModal = (id) => {
+    console.log(id, "here is the dataset")
+    
+    const productIndex = this.state.datasets.findIndex((product) => {
+      if (product.id == id) {
+        return true
+      }
+      else return false
+    })
+
     this.setState({
-      chosenDataSetIndex: dataSet,
+      chosenDataSetIndex: productIndex,
+      showPurchaseModal: !this.state.showPurchaseModal
+    })
+  }
+
+  updateFeed = () => {
+    console.log("UPDATE FEED IS WORKING")
+    const newDataSets = this.state.datasets
+    newDataSets.splice(this.state.chosenDataSetIndex, 1)
+    this.setState({
+      datasets: newDataSets,
       showPurchaseModal: !this.state.showPurchaseModal
     })
   }
@@ -56,18 +74,13 @@ class MainContainer extends Component {
   }
 
   render(){
-<<<<<<< HEAD
-    // console.log(this.state.datasets[0].name, '<--state in render');
-=======
-    console.log(this.state, '<--state in render');
-    console.log(this.props.userInfo.id, "HERE IS THE ID INSIDE MAIN CONTAINER")
->>>>>>> 2df4b04ca0ffdc1817746d2a07813905d71a74e6
+
     return (
       <div>
         {
           this.state.showPurchaseModal
           ? 
-          <Purchase datasets={this.state.datasets} id={this.props.userInfo.id}/> 
+          <Purchase updateFeed={this.updateFeed} index={this.state.chosenDataSetIndex} datasets={this.state.datasets} id={this.props.userInfo.id} /> 
           : 
           <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
         }
