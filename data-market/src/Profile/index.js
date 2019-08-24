@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PurchasedData from '../PurchasedData'
 import { Button, Form, Grid, Image, Message, Card, Icon} from 'semantic-ui-react';
-import { Menu } from 'semantic-ui-react'
+import { Menu, Container } from 'semantic-ui-react'
 import SoldData from '../SoldData'
+import EditData from '../EditData'
 
 //import Header from '../Header'
 
@@ -14,7 +15,9 @@ class Profile extends Component {
     super();
     this.state = {
       purchasedData: [],
-      soldData: []
+      soldData: [],
+      showEditModal: false,
+      dataToEditId: ''
     }
   }
   componentDidMount() {
@@ -49,11 +52,29 @@ class Profile extends Component {
       return err
     }
   }
+  closeModal = () => {
+    this.setState({
+      dataToEditId: '',
+      showEditModal: !this.state.showEditModal
+    })
+  }
+  showModal = (dataSetToEdit) => {
+
+    //const id = e.currentTarget.dataset.product
+    //console.log(id, 'HERE IS THE INDEX OF PRODUCT')
+    this.setState({
+      showEditModal: !this.state.showEditModal
+    })
+    // this.setState({
+    //   employeeToEdit: employee,
+    //   showEditModal: !this.state.showEditModal
+    // })
+  }
 
   render(){
     return (
 
-      <Grid columns={2} padded style={{ height: '100vh'}}>
+      <Grid columns={3} padded style={{ height: '100vh'}}>
         <Menu pointing secondary vertical>
             <Menu.Item as={ Link } to="">LOGO</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
@@ -64,9 +85,12 @@ class Profile extends Component {
             </Menu>
 
         Username: {this.props.userInfo.full_name} <Link to='/user/:id'>Edit</Link> <br/><br/>
+        <Grid.Column>
         <PurchasedData orders={this.state.purchasedData}/> <br/>
-
-        <SoldData soldData={this.state.soldData} />
+        </Grid.Column>
+        <Grid.Column>
+        {this.state.showEditModal ? <EditData closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} />}
+        </Grid.Column>
       </Grid>
       )
   }
