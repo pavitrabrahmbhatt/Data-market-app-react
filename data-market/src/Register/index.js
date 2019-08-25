@@ -29,7 +29,7 @@ class Register extends Component {
       if(data.status.message === 'Success'){
         this.props.history.push('/data/')
       } else {
-        console.log(data, this.props)
+        console.log(data)
       }
     }).catch((err) => {
       console.log(err)

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import DataList from '../DataList'
 import Purchase from '../Purchase'
+import IndustryView from '../IndustryView'
 import { Menu } from 'semantic-ui-react'
 import { Button, Form, Grid, Image, Message, Card, Icon} from 'semantic-ui-react';
 
@@ -10,7 +11,8 @@ class MainContainer extends Component {
     super();
     this.state = {
       datasets: [],
-      showPurchaseModal: false, 
+      showPurchaseModal: false,
+      showListModal: true, 
       chosenDataSetIndex: null
     }
   }
@@ -35,9 +37,15 @@ class MainContainer extends Component {
       showPurchaseModal: !this.state.showPurchaseModal
     })
   }
+  showList = () => {
+    console.log("SHOW MODAL IS BEING CLICKED")
+    this.setState({
+      showListModal: !this.state.showListModal
+    })
+  }
 
   updateFeed = () => {
-    console.log("UPDATE FEED IS WORKING")
+    
     const newDataSets = this.state.datasets
     newDataSets.splice(this.state.chosenDataSetIndex, 1)
     this.setState({
@@ -49,7 +57,7 @@ class MainContainer extends Component {
   getDataSets = async () => {
 
     try {
-      const responseGetDataSets = await fetch('http://localhost:8000/data/datalist', {
+      const responseGetDataSets = await fetch('http://localhost:8000/data/', {
         credentials: 'include',
         method: 'GET'
       });
@@ -61,7 +69,7 @@ class MainContainer extends Component {
       }
 
       const dataResponse = await responseGetDataSets.json();
-      //console.log(dataResponse, ' dataResponse')
+      
 
       this.setState({
         datasets: [...dataResponse.data]
@@ -76,28 +84,34 @@ class MainContainer extends Component {
 
   render(){
 
+    let innerModal; 
+    
+    if (!this.state.showListModal) {
+      innerModal =  <IndustryView datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
+    } else if (this.state.showListModal) {
+      innerModal = <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
+    }
+    console.log(innerModal)
+
     return (
      
        <Grid columns={2} padded style={{ height: '100vh'}}>
         <Menu pointing secondary vertical>
             <Menu.Item as={ Link } to="">LOGO</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
+            <button onClick={this.showList}>View As List</button>
             <Menu.Item as={ Link } to="/sample">Sample Data</Menu.Item>
             <Menu.Item as={ Link } to="/user/:id">Profile</Menu.Item>
             <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
             <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
             </Menu>
-
-         
-
-      
-
+            
         {
           this.state.showPurchaseModal
           ? 
           <Purchase updateFeed={this.updateFeed} index={this.state.chosenDataSetIndex} datasets={this.state.datasets} id={this.props.userInfo.id} /> 
           : 
-          <DataList datasets={this.state.datasets} showPurchaseModal={this.state.showPurchaseModal} showModal={this.showModal}/>
+          innerModal
         }
      </Grid>
     )
