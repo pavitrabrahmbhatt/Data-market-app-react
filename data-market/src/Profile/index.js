@@ -116,15 +116,10 @@ class Profile extends Component {
 
   render(){
     return (
-      <div >
-      <Header block>
-          {this.props.userInfo.full_name} <br/> 
-          <Link to='/user/:id'>Edit</Link>
-          </Header>
+      <div>
+      <Grid columns={2}>
       
-      <div style={{display: 'flex', width: '100%', height: '100%'}}>
-        <div style={{width: '30%', height: '100%'}}>
-        <Menu pointing secondary vertical style={{ minHeight: '100vh'}}>
+      <Menu pointing secondary vertical>
             <Menu.Item as={ Link } to="">LOGO</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
             <Menu.Item as={ Link } to="/sample">Sample Data</Menu.Item>
@@ -132,21 +127,19 @@ class Profile extends Component {
             <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
             <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
             </Menu>
-         </div>
-         <div style={{width: '70%'}}>
+      
+      <Grid.Column>
+      {this.props.userInfo.full_name} <br/> 
+          <Link to='/user/:id'>Edit</Link>
+        <Grid.Row>
+       <PurchasedData orders={this.state.purchasedData}/> <br/>
+        </Grid.Row>
+        <Grid.Row>
         
-         <Grid container>
-          <Grid.Row>
-          
-          <PurchasedData orders={this.state.purchasedData}/> 
-          </Grid.Row>
-          <Divider/>
-          <Grid.Row>
-          {this.state.showEditModal ? <EditData data={this.state} updateDataSet={this.updateDataSet} dataToEditId={this.state.dataToEditId} closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} deleteDataSet={this.deleteDataSet}/>}
-          </Grid.Row>
-          </Grid>
-          </div>
-        </div>
+        {this.state.showEditModal ? <EditData data={this.state} updateDataSet={this.updateDataSet} dataToEditId={this.state.dataToEditId} closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} deleteDataSet={this.deleteDataSet}/>}
+        </Grid.Row>
+        </Grid.Column>
+      </Grid>
       </div>
       
       )
@@ -154,5 +147,4 @@ class Profile extends Component {
 }
 export default Profile;
 
-//Grid container column={1} style={{ minHeight: '100vh'}}
-//PurchasedData orders={this.state.purchasedData.all_orders}/> <br/>
+
