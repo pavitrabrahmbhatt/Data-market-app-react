@@ -1,5 +1,4 @@
 
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PurchasedData from '../PurchasedData'
@@ -53,7 +52,7 @@ class Profile extends Component {
   render(){
     return (
 
-      <Grid columns={2} padded style={{ height: '100vh'}}>
+      <Grid columns={4} padded style={{ height: '100vh'}}>
         <Menu pointing secondary vertical>
             <Menu.Item as={ Link } to="">LOGO</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
@@ -61,12 +60,12 @@ class Profile extends Component {
             <Menu.Item as={ Link } to="/user/:id">Profile</Menu.Item>
             <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
             <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
-            </Menu>
+        </Menu>
 
-        Username: {this.props.userInfo.full_name} <Link to='/user/:id'>Edit</Link> <br/><br/>
+        Username: {this.props.userInfo.full_name}<Link to='/user/:id'>Edit Profile</Link>  <br/><br/>
         <PurchasedData orders={this.state.purchasedData}/> <br/>
 
-        <SoldData soldData={this.state.soldData} />
+        <SoldData soldData={this.state.soldData} /><Link to='/user/:id'>Edit</Link><Link to='/user/:id'>Delete</Link>
       </Grid>
       )
   }

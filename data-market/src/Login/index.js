@@ -34,6 +34,10 @@ class Login extends Component {
     return (
       <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
         <Grid.Column style={{maxWidth: 450}}>
+          <Header as='h1' textAlign='center'>
+          IXION
+          </Header>
+          <p>Ixion helps professionals like you find and understand data</p>
           <Header as='h2' textAlign='center'>
             Login
           </Header>
