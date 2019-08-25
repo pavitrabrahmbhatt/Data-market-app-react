@@ -17,7 +17,13 @@ class Profile extends Component {
       purchasedData: [],
       soldData: [],
       showEditModal: false,
-      dataToEditId: ''
+      dataToEditId: '',
+      name: '',
+      price: 0,
+      industry: '',
+      description: '',
+      territory: '',
+      source: ''
     }
   }
   componentDidMount() {
@@ -52,23 +58,37 @@ class Profile extends Component {
       return err
     }
   }
+  updateDataSet = (dataSetEdited) => {
+    const dataSetEditedArray = this.state.soldData.map(dataSet => {
+      if (dataSet.id === dataSetEdited.id) {
+        dataSet = dataSetEdited
+      }
+      return dataSet
+    })
+    this.setState({
+      soldData: dataSetEditedArray,
+      showEditModal: !this.state.showEditModal
+    })
+  }
   closeModal = () => {
     this.setState({
       dataToEditId: '',
       showEditModal: !this.state.showEditModal
     })
   }
-  showModal = (dataSetToEdit) => {
-
-    //const id = e.currentTarget.dataset.product
-    //console.log(id, 'HERE IS THE INDEX OF PRODUCT')
+  showModal = (dataSet) => {
+    console.log(dataSet, "HERE IS THE DATASET SELECTED FOR EDIT")
     this.setState({
+      dataToEditId: dataSet.id,
+      name: dataSet.name,
+      price: dataSet.price,
+      industry: dataSet.industry,
+      description: dataSet.description,
+      territory: dataSet.territory,
+      source: dataSet.source,
       showEditModal: !this.state.showEditModal
     })
-    // this.setState({
-    //   employeeToEdit: employee,
-    //   showEditModal: !this.state.showEditModal
-    // })
+
   }
 
   render(){
@@ -89,7 +109,7 @@ class Profile extends Component {
         <PurchasedData orders={this.state.purchasedData}/> <br/>
         </Grid.Column>
         <Grid.Column>
-        {this.state.showEditModal ? <EditData closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} />}
+        {this.state.showEditModal ? <EditData data={this.state} updateDataSet={this.updateDataSet} dataToEditId={this.state.dataToEditId} closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} />}
         </Grid.Column>
       </Grid>
       )
