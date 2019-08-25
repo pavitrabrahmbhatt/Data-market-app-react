@@ -1,9 +1,10 @@
 
 
 import React, { Component } from 'react';
+import './Profile.css'
 import { Link } from 'react-router-dom';
 import PurchasedData from '../PurchasedData'
-import { Button, Form, Grid, Image, Message, Card, Icon} from 'semantic-ui-react';
+import { Button, Form, Grid, Image, Message, Card, Icon, Header, Divider} from 'semantic-ui-react';
 import { Menu, Container } from 'semantic-ui-react'
 import SoldData from '../SoldData'
 import EditData from '../EditData'
@@ -115,9 +116,15 @@ class Profile extends Component {
 
   render(){
     return (
-
-      <Grid columns={3} padded style={{ height: '100vh'}}>
-        <Menu pointing secondary vertical>
+      <div >
+      <Header block>
+          {this.props.userInfo.full_name} <br/> 
+          <Link to='/user/:id'>Edit</Link>
+          </Header>
+      
+      <div style={{display: 'flex', width: '100%', height: '100%'}}>
+        <div style={{width: '30%', height: '100%'}}>
+        <Menu pointing secondary vertical style={{ minHeight: '100vh'}}>
             <Menu.Item as={ Link } to="">LOGO</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
             <Menu.Item as={ Link } to="/sample">Sample Data</Menu.Item>
@@ -125,18 +132,27 @@ class Profile extends Component {
             <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
             <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
             </Menu>
-
-        Username: {this.props.userInfo.full_name} <Link to='/user/:id'>Edit</Link> <br/><br/>
-        <Grid.Column>
-        <PurchasedData orders={this.state.purchasedData}/> <br/>
-        </Grid.Column>
-        <Grid.Column>
-        {this.state.showEditModal ? <EditData data={this.state} updateDataSet={this.updateDataSet} dataToEditId={this.state.dataToEditId} closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} deleteDataSet={this.deleteDataSet}/>}
-        </Grid.Column>
-      </Grid>
+         </div>
+         <div style={{width: '70%'}}>
+        
+         <Grid container>
+          <Grid.Row>
+          
+          <PurchasedData orders={this.state.purchasedData}/> 
+          </Grid.Row>
+          <Divider/>
+          <Grid.Row>
+          {this.state.showEditModal ? <EditData data={this.state} updateDataSet={this.updateDataSet} dataToEditId={this.state.dataToEditId} closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} deleteDataSet={this.deleteDataSet}/>}
+          </Grid.Row>
+          </Grid>
+          </div>
+        </div>
+      </div>
+      
       )
   }
 }
 export default Profile;
 
+//Grid container column={1} style={{ minHeight: '100vh'}}
 //PurchasedData orders={this.state.purchasedData.all_orders}/> <br/>
