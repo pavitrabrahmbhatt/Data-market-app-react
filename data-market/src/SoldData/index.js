@@ -20,7 +20,8 @@ const SoldData = (props) => {
         Territory: {dataset.territory}
         </Card.Content>
         <Card.Content extra>
-          <button onClick={props.showModal.bind(null, dataset)}>Edit</button>
+          <button onClick={props.showModal.bind(null, dataset)}>Edit</button><br/>
+          <button onClick={props.deleteDataSet.bind(null, dataset.id)}>Remove</button>
         </Card.Content>
       </Card>
       

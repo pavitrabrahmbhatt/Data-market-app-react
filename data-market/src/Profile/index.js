@@ -88,7 +88,29 @@ class Profile extends Component {
       source: dataSet.source,
       showEditModal: !this.state.showEditModal
     })
+  }
+  deleteDataSet = async (dataSetId) => {
+    console.log(dataSetId, " id of data set to delete")
 
+    try {
+      const removeDataSet = await fetch(`http://localhost:8000/data/${dataSetId}`, {
+        method: 'Delete',
+        credentials: 'include'
+      })
+
+      if (removeDataSet.status !== 200) {
+        throw Error('delete request not working')
+      }
+      const removeDataSetJson = await removeDataSet.json()
+      console.log(removeDataSetJson)
+
+      this.setState({
+        soldData: this.state.soldData.filter((dataset) => dataset.id !== dataSetId)
+      })
+    } catch (err) {
+      console.log(err)
+      return err
+    }
   }
 
   render(){
@@ -109,7 +131,7 @@ class Profile extends Component {
         <PurchasedData orders={this.state.purchasedData}/> <br/>
         </Grid.Column>
         <Grid.Column>
-        {this.state.showEditModal ? <EditData data={this.state} updateDataSet={this.updateDataSet} dataToEditId={this.state.dataToEditId} closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} />}
+        {this.state.showEditModal ? <EditData data={this.state} updateDataSet={this.updateDataSet} dataToEditId={this.state.dataToEditId} closeModal={this.closeModal}/> : <SoldData showModal={this.showModal} soldData={this.state.soldData} deleteDataSet={this.deleteDataSet}/>}
         </Grid.Column>
       </Grid>
       )
