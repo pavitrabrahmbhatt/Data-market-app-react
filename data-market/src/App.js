@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { Header} from 'semantic-ui-react'
+
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Login';
@@ -147,7 +149,7 @@ class App extends Component {
   render(){
       return (
         <main>
-          <p onClick={() => this.logout()}>logout</p>
+          <Header style={{backgroundColor: '#26547c'}} block><p style={{backgroundColor: '#26547c'}} onClick={() => this.logout()}>logout</p></Header>
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} logIn={this.logIn} />} />
             <Route exact path="/data/sell" render={(props) => <Sell {...props} userInfo={this.state} sellData={this.sellData} /> } />

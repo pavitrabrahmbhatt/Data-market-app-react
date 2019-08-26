@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './MainContainer.css'
 import { Link } from 'react-router-dom';
 import DataList from '../DataList'
 import Purchase from '../Purchase'
 import IndustryView from '../IndustryView'
 import { Menu } from 'semantic-ui-react'
-import { Button, Form, Grid, Image, Message, Card, Icon} from 'semantic-ui-react';
+import { Button, Form, Grid, Image, Message, Card, Icon, Segment} from 'semantic-ui-react';
 
 class MainContainer extends Component {
   constructor(){
@@ -96,9 +97,9 @@ class MainContainer extends Component {
     console.log(innerModal)
 
     return (
-     
-       <Grid columns={2} padded style={{ height: '100vh'}}>
-        <Menu pointing secondary vertical>
+     <Grid>
+        <Grid.Column width={3} style={{position: 'relative', marginBottom: '14px', height: '100vh'}}>
+        <Menu pointing secondary vertical style={{ height: '100vh', postion: 'absolute'}} >
             <Menu.Item as={ Link } to="">LOGO</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
             <button onClick={this.showList}>View As List</button>
@@ -107,7 +108,9 @@ class MainContainer extends Component {
             <Menu.Item as={ Link } to="/data/sell">Sell Data</Menu.Item>
             <Menu.Item as={ Link } to="/">LogOut</Menu.Item>
             </Menu>
-            
+          </Grid.Column>
+          <Grid.Column width={10}>
+          <Segment style={{height: '100vh', backgroundColor: '#f3f3f3'}}>
         {
           this.state.showPurchaseModal
           ? 
@@ -115,9 +118,14 @@ class MainContainer extends Component {
           : 
           innerModal
         }
+        </Segment>
+        </Grid.Column>
+        
      </Grid>
+       
     )
   }
 }
 
 export default MainContainer
+
