@@ -19,7 +19,7 @@ const PurchasedData = (props) => {
         Territory: {dataset.product_id.territory}
         </Card.Content>
         <Card.Content extra>
-          <button>DOWNLOAD</button>
+          <Link to='https://docs.google.com/spreadsheets/d/19VpWW9cddV-z6RK48U31JDtsnARb3an5dv6q9EDBFpA/edit#gid=0'>DOWNLOAD</Link>
         </Card.Content>
       </Card>
       </Grid.Column>
