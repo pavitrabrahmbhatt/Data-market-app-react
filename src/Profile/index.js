@@ -30,7 +30,7 @@ class Profile extends Component {
   getPurchasedData = async () => {
     console.log("PURCHASED DATA FUNCTION CALLED")
     try {
-      const responseGetPurchasedData = await fetch(`http://localhost:8000/user/${this.props.userInfo.id}`, {
+      const responseGetPurchasedData = await fetch(`${process.env.REACT_APP_API_URL}/user/${this.props.userInfo.id}`, {
         credentials: 'include',
         method: 'GET'
       });
@@ -94,7 +94,7 @@ class Profile extends Component {
     console.log(dataSetId, " id of data set to delete")
 
     try {
-      const removeDataSet = await fetch(`http://localhost:8000/data/${dataSetId}`, {
+      const removeDataSet = await fetch(`${process.env.REACT_APP_API_URL}/data/${dataSetId}`, {
         method: 'Delete',
         credentials: 'include'
       })

@@ -42,7 +42,7 @@ class App extends Component {
   logIn = async (loginInfo) => {
     try {
 
-      const loginResponse = await fetch('http://localhost:8000/user/login', {
+      const loginResponse = await fetch(`${process.env.REACT_APP_API_URL}/user/login`, {
         method: 'POST',
         credentials: 'include',// on every request we have to send the cookie
         body: JSON.stringify(loginInfo),
@@ -72,7 +72,7 @@ class App extends Component {
   }
 
   logout = async () => {
-      const loginResponse = await fetch('http://localhost:8000/user/logout', {
+      const loginResponse = await fetch(`${process.env.REACT_APP_API_URL}/user/logout`, {
         credentials: 'include'        
       })
       const parsed = await loginResponse.json()
@@ -83,7 +83,7 @@ class App extends Component {
   register = async (data) => {
      try {
 
-      const registerResponse = await fetch('http://localhost:8000/user/register', {
+      const registerResponse = await fetch(`${process.env.REACT_APP_API_URL}/user/register`, {
         method: 'POST',
         credentials: 'include', 
         body: JSON.stringify(data),
@@ -122,7 +122,7 @@ class App extends Component {
     
      try {
 
-      const sellResponse = await fetch('http://localhost:8000/data/sell', {
+      const sellResponse = await fetch(`${process.env.REACT_APP_API_URL}/data/sell`, {
         method: 'POST',
         credentials: 'include', 
         body: JSON.stringify(data),

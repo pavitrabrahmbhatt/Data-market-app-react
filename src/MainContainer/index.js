@@ -58,7 +58,7 @@ class MainContainer extends Component {
   getDataSets = async () => {
 
     try {
-      const responseGetDataSets = await fetch('http://localhost:8000/data/', {
+      const responseGetDataSets = await fetch(`${process.env.REACT_APP_API_URL}/data/`, {
         credentials: 'include',
         method: 'GET'
       });

@@ -18,18 +18,3 @@ const DataSet = () => {
 
 export default DataSet
 
-//   const productToBuy = props.datasets.map((dataset) => {
-//     return (
-//       <Card key={dataset._id}>
-//         <Card.Content header={dataset.name} />
-//         <Card.Content>
-//         Description: {dataset.description}<br/>
-//         Industry: {dataset.industry}<br/>
-//         Territory: {dataset.territory}
-//         </Card.Content>
-//         <Card.Content extra>
-//           <b>{dataset.price}</b>
-//         </Card.Content>
-//       </Card>
-//     )
-//   })

@@ -12,7 +12,7 @@ class Purchase extends React.Component {
     e.preventDefault();
 
     try {
-      const createOrderResponse = await fetch(`http://localhost:8000/order/${this.props.datasets[this.props.index].id}`, {
+      const createOrderResponse = await fetch(`${process.env.REACT_APP_API_URL}/order/${this.props.datasets[this.props.index].id}`, {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(),

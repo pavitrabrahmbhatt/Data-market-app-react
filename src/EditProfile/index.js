@@ -30,7 +30,7 @@ class EditProfile extends React.Component {
     e.preventDefault()
 
     try{
-      const editRequest = await fetch(`http://localhost:8000/user/${this.props.userInfo.id}/account`,{       
+      const editRequest = await fetch(`${process.env.REACT_APP_API_URL}/user/${this.props.userInfo.id}/account`,{       
         method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state),

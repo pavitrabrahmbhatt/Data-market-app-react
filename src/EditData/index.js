@@ -29,7 +29,7 @@ class EditData extends React.Component {
     e.preventDefault()
 
     try{
-      const editRequest = await fetch(`http://localhost:8000/data/${this.props.dataToEditId}`,{       
+      const editRequest = await fetch(`${process.env.REACT_APP_API_URL}/data/${this.props.dataToEditId}`,{       
         method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state),
