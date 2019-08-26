@@ -30,6 +30,8 @@ class App extends Component {
       password: '',
       email: '',
       full_name: '',
+      job_title: '',
+      organization_name: '',
       id: 0,
       loggedIn: false,
       loading: true
@@ -95,6 +97,17 @@ class App extends Component {
       console.log(err)
     }
   }
+
+  updateProfile = (profile) => {
+    this.setState({
+      email: profile.email,
+      full_name: profile.full_name,
+      organization_name: profile.organization_name,
+      job_title:profile.job_title
+    })
+    
+  }
+
   sellData = async (data) => {
     
      try {
@@ -133,7 +146,7 @@ class App extends Component {
             <Route exact path='/data/' render={(props) => <MainContainer {...props} userInfo={this.state} /> } />
             <Route exact path='/data/:id' render={(props) => <Purchase {...props} userInfo={this.state} /> } />
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
-            <Route exact path="/user/:id" render={(props) => <Profile {...props} userInfo={this.state}/> } />
+            <Route exact path="/user/:id" render={(props) => <Profile {...props} updateProfile={this.updateProfile} userInfo={this.state}/> } />
             <Route exact path="/sample" render={(props) => <SampleData {...props} userInfo={this.state}/> } />
             <Route component={My404} />
           </Switch>
