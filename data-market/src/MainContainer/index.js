@@ -62,14 +62,15 @@ class MainContainer extends Component {
         method: 'GET'
       });
 
-      //console.log(responseGetDataSets, ' responseGetDataSets')
+      console.log(responseGetDataSets, ' responseGetDataSets')
 
-      if(responseGetDataSets.status !== 200){
-        throw Error('404 from server');
+      if(responseGetDataSets.status === 401) {
+        console.log("you are not allowed to do that");
+        /// tell  user in some meaninngulf waay that they're not authorized
       }
 
       const dataResponse = await responseGetDataSets.json();
-      
+      console.log(dataResponse)      
 
       this.setState({
         datasets: [...dataResponse.data]
@@ -77,7 +78,8 @@ class MainContainer extends Component {
 
 
     } catch(err){
-      console.error(err, ' getDataSets error');
+      console.error("here is the error we got when trying to getDataSets");
+      console.error(err);
       return err
     }
   }

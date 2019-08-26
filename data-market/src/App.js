@@ -69,6 +69,14 @@ class App extends Component {
     }
   }
 
+  logout = async () => {
+      const loginResponse = await fetch('http://localhost:8000/user/logout', {
+        credentials: 'include'        
+      })
+      const parsed = await loginResponse.json()
+      console.log(parsed);
+      // make it show the login page
+  }    
  
   register = async (data) => {
      try {
@@ -139,6 +147,7 @@ class App extends Component {
   render(){
       return (
         <main>
+          <p onClick={() => this.logout()}>logout</p>
           <Switch>
             <Route exact path="/" render={(props) => <Login {...props} logIn={this.logIn} />} />
             <Route exact path="/data/sell" render={(props) => <Sell {...props} userInfo={this.state} sellData={this.sellData} /> } />
