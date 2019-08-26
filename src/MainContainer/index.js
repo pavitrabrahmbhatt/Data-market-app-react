@@ -5,7 +5,7 @@ import DataList from '../DataList'
 import Purchase from '../Purchase'
 import IndustryView from '../IndustryView'
 import { Menu } from 'semantic-ui-react'
-import { Button, Form, Grid, Image, Message, Card, Icon, Segment} from 'semantic-ui-react';
+import { Button, Form, Grid, Image, Message, Card, Icon, Segment, Container} from 'semantic-ui-react';
 
 class MainContainer extends Component {
   constructor(){
@@ -98,7 +98,7 @@ class MainContainer extends Component {
 
     return (
      <Grid>
-        <Grid.Column width={3} style={{position: 'relative', marginBottom: '14px', height: '100vh'}}>
+        <Grid.Column width={4} style={{position: 'relative', marginBottom: '14px', height: '100vh'}}>
         <Menu pointing secondary vertical style={{ height: '100vh', postion: 'absolute'}} >
             <Menu.Item as={ Link } to="">LOGO</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
