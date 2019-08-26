@@ -33,7 +33,7 @@ class Profile extends Component {
       const responseGetPurchasedData = await fetch(`${process.env.REACT_APP_API_URL}/user/${this.props.userInfo.id}`, {
         credentials: 'include',
         method: 'GET'
-      });
+      });  
 
 
       // if(responseGetDataSets.status !== 200){
