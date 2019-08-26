@@ -122,11 +122,10 @@ class App extends Component {
       })
 
       const parsedResponse = await sellResponse.json();
-
+      console.log(parsedResponse.data, "HERE IS THE RESPONSE FROM THE DATABASE")
 
       this.setState(() => {
         return {
-          ...parsedResponse.data,
           loading: false
         }
       })

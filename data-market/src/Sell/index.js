@@ -38,9 +38,10 @@ class Sell extends Component {
     const sell = this.props.sellData(this.state);
     
     sell.then((data) => {
-      
+
       if(data.status.message === 'Success'){
         this.props.history.push('/data/')
+
       } else {
         console.log(data, this.props)
       }
