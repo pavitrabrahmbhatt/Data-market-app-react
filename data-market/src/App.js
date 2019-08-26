@@ -109,11 +109,10 @@ class App extends Component {
       })
 
       const parsedResponse = await sellResponse.json();
-
+      console.log(parsedResponse.data, "HERE IS THE RESPONSE FROM THE DATABASE")
 
       this.setState(() => {
         return {
-          ...parsedResponse.data,
           loading: false
         }
       })
@@ -133,7 +132,7 @@ class App extends Component {
             <Route exact path='/data/' render={(props) => <MainContainer {...props} userInfo={this.state} /> } />
             <Route exact path='/data/:id' render={(props) => <Purchase {...props} userInfo={this.state} /> } />
             <Route exact path="/register" render={(props) => <Register {...props} register={this.register} /> } />
-            <Route exact path="/user/:id" render={(props) => <Profile {...props} userInfo={this.state}/> } />
+            <Route exact path="/user/:id" render={(props) => <Profile {...props} updateProfile={this.updateProfile} serInfo={this.state}/> } />
             <Route exact path="/sample" render={(props) => <SampleData {...props} userInfo={this.state}/> } />
             <Route component={My404} />
           </Switch>
