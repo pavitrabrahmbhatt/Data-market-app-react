@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import './Login.css'
 
 class Login extends Component {
   constructor(){
@@ -32,7 +33,7 @@ class Login extends Component {
   }
   render(){
     return (
-      <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh'}}>
+      <Grid textAlign='center' verticalAlign='middle' style={{ height: '100vh', backgroundImage: "url('https://media.giphy.com/media/xVn3ZmKrKIOLS/giphy.gif')"}}>
         <Grid.Column style={{maxWidth: 450}}>
           <Header as='h1' textAlign='center'>
           IXION
