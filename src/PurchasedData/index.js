@@ -1,6 +1,7 @@
 import React from 'react'
 //import EditEmployee from '../EditEmployee'
 import { Grid, Header, Card } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 
 const PurchasedData = (props) => {
