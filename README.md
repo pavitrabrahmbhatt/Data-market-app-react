@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+USER STORIES
+------------
 
-## Available Scripts
+## HOME PAGE 
 
-In the project directory, you can run:
+As a site visitor, I want to see information describing the site, so that I know whether I want to continue exploring the site.
 
-### `npm start`
+As a user, I want to see a login form that allows me to input login information, so that I can access my buyer and/or seller profile.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## REGISTER
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+As a new site visitor, I want to see input fields for my organization, full name, job title, email, password, and checkbox for terms and conditions, so that I can setup an account on the data marketplace. 
 
-### `npm test`
+## EXPLORE DATA PAGE
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As a user, I want to see the available data sets with their title, price, industry, description and territory in a feed, beginning with the most recently uploaded.
 
-### `npm run build`
+As a user, I want to be able to click on a card and go to that data set's purchasing page.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## DATA SET TO BE SOLD
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+As a seller, I want to see a box where I can input information for buyers about the data set I want to sell (such as title, industry, region, selling price, and a short description of the data), so that buyers can understand the appeal of my dataset more easily.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+As a a seller, I want to see a box where I can upload a link to my dataset, so that I can complete the process of placing my dataset in the marketplace.
 
-### `npm run eject`
+## EDIT DATA SET TO BE SOLD
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+As a seller, I want to see a box with fields that display the current details of the data set I have up for sale, so I can see what data I want to change.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+As a seller, I want to be able to input details about the dataset and/or upload a new version of (or different) data set, so that I can update the product I am selling. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## DATA SETS
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+As a user, I want to see the available data sets in list view showing the industry and title of the set.
 
-## Learn More
+As a user, I want to be able to click on a title and go to that data set's purchasing page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## SAMPLE DATA
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+As a user, I want to see a sample example of a data set similar to the layout of most data sets sold on the site.
 
-### Code Splitting
+As a user, I want to see a table layout of data including categories and values.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## PROFILE PAGE
 
-### Analyzing the Bundle Size
+As a user, I want to see data sets I have purchased (including industry name, title, and a link to download) as well as data sets I have up for sale (if any) and a link to view them.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+As a user, I want to see a link to each data set I have up for sale and edit and delete links, so I can edit the data set or remove it from the marketplace.
 
-### Making a Progressive Web App
+## PROFILE EDIT
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+As a user, I want to be able to edit job title, organization name, email and password that I used when I created my account.
 
-### Advanced Configuration
+As a user, I want to be able to save my changes and go back to my profile page.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## BUYING PAGE
 
-### Deployment
+As a user, I want to see the name of the data set, price and a description on the purchase page.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+As a user, I want to be able to purchase a data set from the purchase page.
 
-### `npm run build` fails to minify
+As a user, I want to be able to enter my credit card information to purchase with.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## WIREFRAMES
+
+## Home Page
+![Home Page]
+(./wireframes/1-Home-Page.png)
+
+
