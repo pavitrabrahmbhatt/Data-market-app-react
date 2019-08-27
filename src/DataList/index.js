@@ -23,7 +23,7 @@ const DataSets = (props) => {
           <Card.Content extra>
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <div>
-            <h2><b>{dataset.price}</b></h2>
+            <h2><b>${dataset.price}</b></h2>
             </div>
             <div>
              <Button basic color='black' floated='right' data-product={i} onClick={props.showModal.bind(null, dataset.id)}>Purchase</Button>
