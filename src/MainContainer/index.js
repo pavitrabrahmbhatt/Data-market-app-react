@@ -100,7 +100,7 @@ class MainContainer extends Component {
      <Grid>
         <Grid.Column width={4} style={{position: 'relative', marginBottom: '14px', height: '100vh'}}>
         <Menu pointing secondary vertical style={{ height: '100vh', postion: 'absolute'}} >
-            <Image src='../../public/logo.png' avatar/>
+            <Menu.Item>IXION</Menu.Item>
             <Menu.Item as={ Link } to="/data/" >Browse Data</Menu.Item>
             <button onClick={this.showList}>View As List</button>
             <Menu.Item as={ Link } to="/sample">Sample Data</Menu.Item>
